@@ -2,12 +2,14 @@ library(tidyverse)
 library(compositr)
 library(readxl)
 
+# devtools::load_all()
+
 # ---- Digital exclusion ----
 # Using the Digital Exclusion Risk Index from https://www.goodthingsfoundation.org/what-we-do/news/a-new-tool-in-your-toolbox-the-digital-exclusion-risk-index/
 # Source: https://github.com/GreaterManchesterODA/Digital-Exclusion-Risk-Index
 
 # DERI Scores are calculated using minimum and maximum values at different
-# geographical levels (starting at version 1.4). We use scores based upon 
+# geographical levels (starting at version 1.4). We use scores based upon
 # the maximum and minimum values within each nation.
 england_lsoa_deri <- read_csv("https://raw.githubusercontent.com/GreaterManchesterODA/Digital-Exclusion-Risk-Index/main/Version%201.6/LSOA%20calculations%20and%20scores%20(nation%20level)_v1.6.csv") |>
   select(
@@ -16,7 +18,7 @@ england_lsoa_deri <- read_csv("https://raw.githubusercontent.com/GreaterManchest
     demography_comp_national = `Demography component (national)`,
     deprivation_comp_national = `Deprivation component (national, England IMD)`,
     deri_score_england = `DERI score (national, England IMD)`,
-  ) |> 
+  ) |>
   filter(str_detect(lsoa11_code, "^E"))
 
 # ---- Physical Access to Healthcare ----
@@ -63,13 +65,19 @@ england_hospital_access <-
 
 england_lsoa_health_access <-
   england_gp_access |>
-  left_join(england_hospital_access) |> 
+  left_join(england_hospital_access) |>
   # scale both indicators from 0-10 using same min-max technique as DERI
-  mutate()
-  
-  
-# **then use these scaled indicators to create a new component: health_access_comp**
+  mutate(
+    gp_dist_km_score = calculate_score(gp_dist_km),
+    mean_distance_nearest_three_hospitals_km_score = calculate_score(mean_distance_nearest_three_hospitals_km)
+  )
 
+england_lsoa_health_access_component <-
+  england_lsoa_health_access |>
+  # weighted both indicators equally for the component
+  mutate(health_access_comp_national = gp_dist_km_score * 0.5 + 
+           mean_distance_nearest_three_hospitals_km_score * 0.5) |> 
+  
 # ---- DEPAHRI ----
 
 # **create england_lsoa_depahri by joining england_lsoa_deri & england_lsoa_health_access**
