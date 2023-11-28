@@ -2,7 +2,7 @@ library(tidyverse)
 library(compositr)
 library(readxl)
 
-# devtools::load_all()
+devtools::load_all()
 
 # ---- Digital exclusion ----
 # Using the Digital Exclusion Risk Index from https://www.goodthingsfoundation.org/what-we-do/news/a-new-tool-in-your-toolbox-the-digital-exclusion-risk-index/
@@ -17,7 +17,7 @@ england_lsoa_deri <- read_csv("https://raw.githubusercontent.com/GreaterManchest
     broadband_comp_national = `Broadband component (national)`,
     demography_comp_national = `Demography component (national)`,
     deprivation_comp_national = `Deprivation component (national, England IMD)`,
-    deri_score_england = `DERI score (national, England IMD)`,
+    deri_score_national = `DERI score (national, England IMD)`,
   ) |>
   filter(str_detect(lsoa11_code, "^E"))
 
