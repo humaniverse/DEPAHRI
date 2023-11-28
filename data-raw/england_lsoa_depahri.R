@@ -14,7 +14,7 @@ england_lsoa_deri <- read_csv("https://raw.githubusercontent.com/GreaterManchest
     lsoa11_code = `LSOA code`,
     broadband_comp_national = `Broadband component (national)`,
     demography_comp_national = `Demography component (national)`,
-    deprivation_comp_naitonal = `Deprivation component (national, England IMD)`,
+    deprivation_comp_national = `Deprivation component (national, England IMD)`,
     deri_score_england = `DERI score (national, England IMD)`,
   ) |> 
   filter(str_detect(lsoa11_code, "^E"))
@@ -63,8 +63,11 @@ england_hospital_access <-
 
 england_lsoa_health_access <-
   england_gp_access |>
-  left_join(england_hospital_access)
-# **scale both indicators from 0-10 using same min-max technique as DERI**
+  left_join(england_hospital_access) |> 
+  # scale both indicators from 0-10 using same min-max technique as DERI
+  mutate()
+  
+  
 # **then use these scaled indicators to create a new component: health_access_comp**
 
 # ---- DEPAHRI ----
