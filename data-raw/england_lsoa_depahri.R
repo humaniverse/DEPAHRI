@@ -75,12 +75,21 @@ england_lsoa_health_access <-
 england_lsoa_health_access_component <-
   england_lsoa_health_access |>
   # weighted both indicators equally for the component
-  mutate(health_access_comp_national = gp_dist_km_score * 0.5 + 
-           mean_distance_nearest_three_hospitals_km_score * 0.5) |> 
+  mutate(health_access_comp_national = 
+           gp_dist_km_score * 0.5 + 
+           mean_distance_nearest_three_hospitals_km_score * 0.5) |>
+  select(lsoa11_code, health_access_comp_national)
   
 # ---- DEPAHRI ----
-
-# **create england_lsoa_depahri by joining england_lsoa_deri & england_lsoa_health_access**
-# **create DEPAHRI by using weighted average of all 4 components**
+# Weighting of the components: DERI score is a measure of digital exclusion risk
+# but also includes an important deprivation 
+england_lsoa_depahri <-
+  england_lsoa_deri |> 
+  left_join(england_lsoa_health_access_component) |> 
+  mutate(depahri_score_england = 
+           broadband_comp_national * 0.25 +
+           demography_comp_national * 0.25 +
+           deprivation_comp_national * 0.25 +
+           health_access_comp_national * 0.25)
 
 usethis::use_data(england_lsoa_depahri, overwrite = TRUE)
