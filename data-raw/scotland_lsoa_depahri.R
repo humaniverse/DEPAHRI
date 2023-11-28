@@ -67,7 +67,7 @@ scotland_lsoa_depahri <-
   scotland_lsoa_deri |>
   left_join(scotland_lsoa_health_access_component) |>
   mutate(
-    depahri_score_scotland =
+    depahri_score_national =
       broadband_comp_national * 0.25 +
         demography_comp_national * 0.25 +
         deprivation_comp_national * 0.25 +

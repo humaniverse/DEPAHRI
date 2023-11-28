@@ -86,7 +86,7 @@ england_lsoa_health_access_component <-
 england_lsoa_depahri <-
   england_lsoa_deri |> 
   left_join(england_lsoa_health_access_component) |> 
-  mutate(depahri_score_england = 
+  mutate(depahri_score_national = 
            broadband_comp_national * 0.25 +
            demography_comp_national * 0.25 +
            deprivation_comp_national * 0.25 +

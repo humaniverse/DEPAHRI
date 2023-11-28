@@ -79,7 +79,7 @@ wales_lsoa_health_access_component <-
 wales_lsoa_depahri <-
   wales_lsoa_deri |> 
   left_join(wales_lsoa_health_access_component) |> 
-  mutate(depahri_score_wales = 
+  mutate(depahri_score_national = 
            broadband_comp_national * 0.25 +
            demography_comp_national * 0.25 +
            deprivation_comp_national * 0.25 +

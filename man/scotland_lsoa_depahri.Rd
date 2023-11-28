@@ -12,9 +12,9 @@ A tibble (data frame) with 6,976 rows and 7 variables:
 \item{broadband_comp_national}{DERI Broadband component (national level)}
 \item{demography_comp_national}{DERI Demography component (national level)}
 \item{deprivation_comp_national}{DERI Deprivation component (national level)}
-\item{deri_score_england}{DERI score (national level)}
+\item{deri_score_national}{DERI score (national level)}
 \item{health_access_comp_national}{Health access component (national level)}
-\item{depahri_score_scotland}{DEPAHRI score (national level)}
+\item{depahri_score_national}{DEPAHRI score (national level)}
 }
 }
 \usage{
