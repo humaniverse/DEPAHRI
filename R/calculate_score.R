@@ -30,29 +30,22 @@
 #' values will always mean high risk.
 #'
 #'
-#' @param data Data frame containing a variable to be scored
-#' @param var Name of the variable in the data frame containing the indicator to
-#'        be scored (e.g., gp_dist_km)
+#' @param var Vector containing the indicator to be scored (e.g., gp_dist_km)
 #' @param inverse Default is TRUE. Set as FALSE if higher value of the indicator
 #'        indicates lower risk
 #'
 #' @export
 calculate_score <-
-  function(data,
-           var,
+  function(var,
            inverse = FALSE) {
-    min_val <- min(data[[var]], na.rm = TRUE)
-    max_val <- max(data[[var]], na.rm = TRUE)
-
-    score_var <- paste0(substitute(var), "_score")
+    max_val <- max(var, na.rm = TRUE)
+    min_val <- min(var, na.rm = TRUE)
 
     if (inverse) {
-      data[[score_var]] <- 10 * ((max_val - data[[var]]) / (max_val - min_val))
-
-      return(data)
+      score <- 10 * (max_val - var) / (max_val - min_val)
+    } else {
+      score <- 10 * (var - min_val) / (max_val - min_val)
     }
 
-    data[[score_var]] <- 10 * ((data[[var]] - min_val) / (max_val - min_val))
-
-    return(data)
+    return(score)
   }
