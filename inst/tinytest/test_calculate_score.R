@@ -13,3 +13,11 @@ expected_output_inverse <- c(10, 7.5, 5, 2.5, 0)  # Replace with expected output
 output_inverse <- calculate_score(var, inverse = TRUE)
 
 expect_equal(output_inverse, expected_output_inverse)
+
+# Test case 3: Edge case with an empty vector
+var_empty <- numeric(0)
+expect_error(calculate_score(var_empty), "Input vector is empty")
+
+# Test case 4: Edge case with a vector containing only one element
+var_single <- c(5)
+expect_error(calculate_score(var_single), "Input vector has only one element")
