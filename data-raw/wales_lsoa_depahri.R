@@ -73,8 +73,7 @@ wales_lsoa_health_access_component <-
   select(lsoa11_code, health_access_comp_national)
 
 # ---- DEPAHRI ----
-# Weighting of the components: DERI score is a measure of digital exclusion risk
-# but also includes an important deprivation 
+# Weighting of the components justification in README
 wales_lsoa_depahri <-
   wales_lsoa_deri |> 
   left_join(wales_lsoa_health_access_component) |> 
