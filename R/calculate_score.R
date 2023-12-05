@@ -37,14 +37,14 @@
 calculate_score <-
   function(var,
            inverse = FALSE) {
-    # Check if the input vector is empty
     if (length(var) == 0) {
       stop("Input vector is empty. Please provide a vector with at least one element.")
     }
-
-    # Check if the input vector has only one element
     if (length(var) == 1) {
       stop("Input vector has only one element. Please provide a vector with at least two elements.")
+    }
+    if (length(unique(var, na.rm = TRUE)) == 1) {
+      stop("All values in the input vector are equal. Please provide a vector with varying values.")
     }
 
     max_val <- max(var, na.rm = TRUE)

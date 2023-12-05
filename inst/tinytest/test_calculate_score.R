@@ -21,3 +21,16 @@ expect_error(calculate_score(var_empty), "Input vector is empty")
 # Test case 4: Edge case with a vector containing only one element
 var_single <- c(5)
 expect_error(calculate_score(var_single), "Input vector has only one element")
+
+# Test case 5: Case with a vector containing NAs
+var_with_na <- c(1, 3, NA, 7, 9)
+expected_output_with_na <- c(0, 2.5, NA, 7.5, 10)  # Replace with expected output values
+output_with_na <- calculate_score(var_with_na)
+
+expect_equal(output_with_na, expected_output_with_na)
+
+# Test case 6: Case with a vector where all values are equal
+var_all_equal <- c(3, 3, 3, 3, 3)
+expect_error(calculate_score(var_all_equal), "All values in the input vector are equal")
+
+
