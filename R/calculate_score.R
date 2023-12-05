@@ -30,7 +30,7 @@
 #' values will always mean high risk.
 #'
 #' @param var Vector containing the indicator to be scored (e.g., gp_dist_km)
-#' @param inverse Default is TRUE. Set as FALSE if higher value of the indicator
+#' @param inverse Default is FALSE. Set as TRUE if higher value of the indicator
 #'        indicates lower risk
 #'
 #' @export

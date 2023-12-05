@@ -9,7 +9,7 @@ calculate_score(var, inverse = FALSE)
 \arguments{
 \item{var}{Vector containing the indicator to be scored (e.g., gp_dist_km)}
 
-\item{inverse}{Default is TRUE. Set as FALSE if higher value of the indicator
+\item{inverse}{Default is FALSE. Set as TRUE if higher value of the indicator
 indicates lower risk}
 }
 \description{
