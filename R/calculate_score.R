@@ -37,6 +37,16 @@
 calculate_score <-
   function(var,
            inverse = FALSE) {
+    # Check if the input vector is empty
+    if (length(var) == 0) {
+      stop("Input vector is empty. Please provide a vector with at least one element.")
+    }
+
+    # Check if the input vector has only one element
+    if (length(var) == 1) {
+      stop("Input vector has only one element. Please provide a vector with at least two elements.")
+    }
+
     max_val <- max(var, na.rm = TRUE)
     min_val <- min(var, na.rm = TRUE)
 
