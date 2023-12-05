@@ -1,5 +1,4 @@
 library(tidyverse)
-library(compositr)
 library(statswalesr)
 
 devtools::load_all()

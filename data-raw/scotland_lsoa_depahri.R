@@ -1,5 +1,4 @@
 library(tidyverse)
-library(compositr)
 
 devtools::load_all()
 

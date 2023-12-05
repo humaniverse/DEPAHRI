@@ -1,5 +1,4 @@
 library(tidyverse)
-library(compositr)
 library(readxl)
 
 devtools::load_all()
