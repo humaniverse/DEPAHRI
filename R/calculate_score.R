@@ -30,13 +30,23 @@
 #' values will always mean high risk.
 #'
 #' @param var Vector containing the indicator to be scored (e.g., gp_dist_km)
-#' @param inverse Default is TRUE. Set as FALSE if higher value of the indicator
+#' @param inverse Default is FALSE. Set as TRUE if higher value of the indicator
 #'        indicates lower risk
 #'
 #' @export
 calculate_score <-
   function(var,
            inverse = FALSE) {
+    if (length(var) == 0) {
+      stop("Input vector is empty. Please provide a vector with at least one element.")
+    }
+    if (length(var) == 1) {
+      stop("Input vector has only one element. Please provide a vector with at least two elements.")
+    }
+    if (length(unique(var, na.rm = TRUE)) == 1) {
+      stop("All values in the input vector are equal. Please provide a vector with varying values.")
+    }
+
     max_val <- max(var, na.rm = TRUE)
     min_val <- min(var, na.rm = TRUE)
 

@@ -1,5 +1,4 @@
 library(tidyverse)
-library(compositr)
 library(readxl)
 
 devtools::load_all()
@@ -81,8 +80,7 @@ england_lsoa_health_access_component <-
   select(lsoa11_code, health_access_comp_national)
   
 # ---- DEPAHRI ----
-# Weighting of the components: DERI score is a measure of digital exclusion risk
-# but also includes an important deprivation 
+# Weighting of the components justification in README
 england_lsoa_depahri <-
   england_lsoa_deri |> 
   left_join(england_lsoa_health_access_component) |> 
