@@ -1,7 +1,7 @@
 # DEPAHRI
 
 ## Overview
-The Digital Exclusion and Physical Access to Healthcare Risk Index (DEPAHRI) is a dataset that indicates the overall difficulty of physically and digitally accessing healthcare services in England, Wales and Scotland. It builds on the ![DERI Index](https://github.com/GreaterManchesterODA/Digital-Exclusion-Risk-Index/tree/main), adding a physical component to it.
+The Digital Exclusion and Physical Access to Healthcare Risk Index (DEPAHRI) is a dataset that indicates the overall difficulty of physically and digitally accessing healthcare services in England, Wales and Scotland. It builds on the [DERI Index](https://github.com/GreaterManchesterODA/Digital-Exclusion-Risk-Index/tree/main), adding a physical component to it.
 
 Higher DEPAHRI scores indicate higher risk of exclusion to healthcare services.
 
